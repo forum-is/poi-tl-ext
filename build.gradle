@@ -19,14 +19,8 @@ plugins {
     id 'maven-publish'
 }
 
-def getBranchName() {
-    providers.exec {
-        commandLine("git", "branch", "--show-current")
-    }.standardOutput.asText.get().trim()
-}
-
 ext {
-    VERSION_NAME = 'poi-5' == getBranchName()? "${project.V}-poi5" : project.V
+    VERSION_NAME = project.V
 }
 
 group = GROUP
